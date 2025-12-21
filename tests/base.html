@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Compiler Project{% endblock %}</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: radial-gradient(circle at top, #1b1b2f, #0f0f1a);
+            color: #eaeaff;
+        }
+
+        header {
+            background: linear-gradient(90deg, #2b2b45, #3d2c6d);
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: #d6c9ff;
+        }
+
+        nav a {
+            margin-left: 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.85;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: linear-gradient(145deg, #2a2143, #1c162e);
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.04),
+                0 30px 80px rgba(0,0,0,0.8);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 28px;
+            color: #e2d9ff;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #221b38, #1a142b);
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #bfb8e6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #6a4cff, #8b6cff);
+            box-shadow: 0 10px 30px rgba(106,76,255,0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(106,76,255,0.6);
+        }
+
+        input, textarea {
+            width: 100%;
+            background: #141022;
+            border: 1px solid #3a2f63;
+            border-radius: 10px;
+            padding: 14px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #cfc7ff;
+            font-weight: 600;
+        }
+
+        img.product-image {
+            margin-top: 20px;
+            border-radius: 14px;
+            max-width: 100%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Compiler Project</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">Products</a>
+        <a href="{{ url_for('add_product') }}">Add Product</a>
+    </nav>
+</header>
+
+<div class="page-wrapper">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+</body>
+</html>
