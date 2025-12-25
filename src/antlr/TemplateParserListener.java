@@ -18,16 +18,6 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitPage(TemplateParser.PageContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#htmlDocument}.
-	 * @param ctx the parse tree
-	 */
-	void enterHtmlDocument(TemplateParser.HtmlDocumentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link TemplateParser#htmlDocument}.
-	 * @param ctx the parse tree
-	 */
-	void exitHtmlDocument(TemplateParser.HtmlDocumentContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link TemplateParser#content}.
 	 * @param ctx the parse tree
 	 */
@@ -48,39 +38,39 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitNode(TemplateParser.NodeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code plainText}
+	 * Enter a parse tree produced by the {@code textContentNode}
 	 * labeled alternative in {@link TemplateParser#textContent}.
 	 * @param ctx the parse tree
 	 */
-	void enterPlainText(TemplateParser.PlainTextContext ctx);
+	void enterTextContentNode(TemplateParser.TextContentNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code plainText}
+	 * Exit a parse tree produced by the {@code textContentNode}
 	 * labeled alternative in {@link TemplateParser#textContent}.
 	 * @param ctx the parse tree
 	 */
-	void exitPlainText(TemplateParser.PlainTextContext ctx);
+	void exitTextContentNode(TemplateParser.TextContentNodeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code whitespaceText}
-	 * labeled alternative in {@link TemplateParser#textContent}.
+	 * Enter a parse tree produced by {@link TemplateParser#htmlDocument}.
 	 * @param ctx the parse tree
 	 */
-	void enterWhitespaceText(TemplateParser.WhitespaceTextContext ctx);
+	void enterHtmlDocument(TemplateParser.HtmlDocumentContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code whitespaceText}
-	 * labeled alternative in {@link TemplateParser#textContent}.
+	 * Exit a parse tree produced by {@link TemplateParser#htmlDocument}.
 	 * @param ctx the parse tree
 	 */
-	void exitWhitespaceText(TemplateParser.WhitespaceTextContext ctx);
+	void exitHtmlDocument(TemplateParser.HtmlDocumentContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#doctype}.
+	 * Enter a parse tree produced by the {@code doctypeNode}
+	 * labeled alternative in {@link TemplateParser#doctype}.
 	 * @param ctx the parse tree
 	 */
-	void enterDoctype(TemplateParser.DoctypeContext ctx);
+	void enterDoctypeNode(TemplateParser.DoctypeNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#doctype}.
+	 * Exit a parse tree produced by the {@code doctypeNode}
+	 * labeled alternative in {@link TemplateParser#doctype}.
 	 * @param ctx the parse tree
 	 */
-	void exitDoctype(TemplateParser.DoctypeContext ctx);
+	void exitDoctypeNode(TemplateParser.DoctypeNodeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code pairedHtmlElement}
 	 * labeled alternative in {@link TemplateParser#htmlElement}.
@@ -94,37 +84,29 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code unclosedHtmlElement}
-	 * labeled alternative in {@link TemplateParser#htmlElement}.
+	 * Enter a parse tree produced by the {@code openingTagNode}
+	 * labeled alternative in {@link TemplateParser#openingTag}.
 	 * @param ctx the parse tree
 	 */
-	void enterUnclosedHtmlElement(TemplateParser.UnclosedHtmlElementContext ctx);
+	void enterOpeningTagNode(TemplateParser.OpeningTagNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code unclosedHtmlElement}
-	 * labeled alternative in {@link TemplateParser#htmlElement}.
+	 * Exit a parse tree produced by the {@code openingTagNode}
+	 * labeled alternative in {@link TemplateParser#openingTag}.
 	 * @param ctx the parse tree
 	 */
-	void exitUnclosedHtmlElement(TemplateParser.UnclosedHtmlElementContext ctx);
+	void exitOpeningTagNode(TemplateParser.OpeningTagNodeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#openingTag}.
+	 * Enter a parse tree produced by the {@code closingTagNode}
+	 * labeled alternative in {@link TemplateParser#closingTag}.
 	 * @param ctx the parse tree
 	 */
-	void enterOpeningTag(TemplateParser.OpeningTagContext ctx);
+	void enterClosingTagNode(TemplateParser.ClosingTagNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#openingTag}.
+	 * Exit a parse tree produced by the {@code closingTagNode}
+	 * labeled alternative in {@link TemplateParser#closingTag}.
 	 * @param ctx the parse tree
 	 */
-	void exitOpeningTag(TemplateParser.OpeningTagContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link TemplateParser#closingTag}.
-	 * @param ctx the parse tree
-	 */
-	void enterClosingTag(TemplateParser.ClosingTagContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link TemplateParser#closingTag}.
-	 * @param ctx the parse tree
-	 */
-	void exitClosingTag(TemplateParser.ClosingTagContext ctx);
+	void exitClosingTagNode(TemplateParser.ClosingTagNodeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code selfClosingElement}
 	 * labeled alternative in {@link TemplateParser#selfClosingTag}.
@@ -186,37 +168,29 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitUnquotedAttribute(TemplateParser.UnquotedAttributeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code unmatchedClosingTag}
-	 * labeled alternative in {@link TemplateParser#unmatchedTag}.
+	 * Enter a parse tree produced by the {@code styleBlockNode}
+	 * labeled alternative in {@link TemplateParser#styleBlock}.
 	 * @param ctx the parse tree
 	 */
-	void enterUnmatchedClosingTag(TemplateParser.UnmatchedClosingTagContext ctx);
+	void enterStyleBlockNode(TemplateParser.StyleBlockNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code unmatchedClosingTag}
-	 * labeled alternative in {@link TemplateParser#unmatchedTag}.
+	 * Exit a parse tree produced by the {@code styleBlockNode}
+	 * labeled alternative in {@link TemplateParser#styleBlock}.
 	 * @param ctx the parse tree
 	 */
-	void exitUnmatchedClosingTag(TemplateParser.UnmatchedClosingTagContext ctx);
+	void exitStyleBlockNode(TemplateParser.StyleBlockNodeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#styleBlock}.
+	 * Enter a parse tree produced by the {@code styleRuleNode}
+	 * labeled alternative in {@link TemplateParser#styleRule}.
 	 * @param ctx the parse tree
 	 */
-	void enterStyleBlock(TemplateParser.StyleBlockContext ctx);
+	void enterStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#styleBlock}.
+	 * Exit a parse tree produced by the {@code styleRuleNode}
+	 * labeled alternative in {@link TemplateParser#styleRule}.
 	 * @param ctx the parse tree
 	 */
-	void exitStyleBlock(TemplateParser.StyleBlockContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link TemplateParser#styleRule}.
-	 * @param ctx the parse tree
-	 */
-	void enterStyleRule(TemplateParser.StyleRuleContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link TemplateParser#styleRule}.
-	 * @param ctx the parse tree
-	 */
-	void exitStyleRule(TemplateParser.StyleRuleContext ctx);
+	void exitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link TemplateParser#selectorList}.
 	 * @param ctx the parse tree
@@ -358,35 +332,41 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitComparisonAttributeSelector(TemplateParser.ComparisonAttributeSelectorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#declarationList}.
+	 * Enter a parse tree produced by the {@code declarationListNode}
+	 * labeled alternative in {@link TemplateParser#declarationList}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclarationList(TemplateParser.DeclarationListContext ctx);
+	void enterDeclarationListNode(TemplateParser.DeclarationListNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#declarationList}.
+	 * Exit a parse tree produced by the {@code declarationListNode}
+	 * labeled alternative in {@link TemplateParser#declarationList}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclarationList(TemplateParser.DeclarationListContext ctx);
+	void exitDeclarationListNode(TemplateParser.DeclarationListNodeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#declaration}.
+	 * Enter a parse tree produced by the {@code declarationNode}
+	 * labeled alternative in {@link TemplateParser#declaration}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaration(TemplateParser.DeclarationContext ctx);
+	void enterDeclarationNode(TemplateParser.DeclarationNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#declaration}.
+	 * Exit a parse tree produced by the {@code declarationNode}
+	 * labeled alternative in {@link TemplateParser#declaration}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaration(TemplateParser.DeclarationContext ctx);
+	void exitDeclarationNode(TemplateParser.DeclarationNodeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#declarationValue}.
+	 * Enter a parse tree produced by the {@code declarationValueNode}
+	 * labeled alternative in {@link TemplateParser#declarationValue}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclarationValue(TemplateParser.DeclarationValueContext ctx);
+	void enterDeclarationValueNode(TemplateParser.DeclarationValueNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#declarationValue}.
+	 * Exit a parse tree produced by the {@code declarationValueNode}
+	 * labeled alternative in {@link TemplateParser#declarationValue}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclarationValue(TemplateParser.DeclarationValueContext ctx);
+	void exitDeclarationValueNode(TemplateParser.DeclarationValueNodeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code stringStyleValue}
 	 * labeled alternative in {@link TemplateParser#styleValuePart}.
@@ -604,25 +584,29 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitDecimalNumType(TemplateParser.DecimalNumTypeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#functionCall}.
+	 * Enter a parse tree produced by the {@code functionCallNode}
+	 * labeled alternative in {@link TemplateParser#functionCall}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunctionCall(TemplateParser.FunctionCallContext ctx);
+	void enterFunctionCallNode(TemplateParser.FunctionCallNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#functionCall}.
+	 * Exit a parse tree produced by the {@code functionCallNode}
+	 * labeled alternative in {@link TemplateParser#functionCall}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunctionCall(TemplateParser.FunctionCallContext ctx);
+	void exitFunctionCallNode(TemplateParser.FunctionCallNodeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#valueList}.
+	 * Enter a parse tree produced by the {@code valueListNode}
+	 * labeled alternative in {@link TemplateParser#valueList}.
 	 * @param ctx the parse tree
 	 */
-	void enterValueList(TemplateParser.ValueListContext ctx);
+	void enterValueListNode(TemplateParser.ValueListNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#valueList}.
+	 * Exit a parse tree produced by the {@code valueListNode}
+	 * labeled alternative in {@link TemplateParser#valueList}.
 	 * @param ctx the parse tree
 	 */
-	void exitValueList(TemplateParser.ValueListContext ctx);
+	void exitValueListNode(TemplateParser.ValueListNodeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code jinjaExpression}
 	 * labeled alternative in {@link TemplateParser#jinjaExpr}.
@@ -636,27 +620,17 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitJinjaExpression(TemplateParser.JinjaExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#jinjaExpressionBody}.
+	 * Enter a parse tree produced by the {@code jinjaExpressionBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaExpressionBody}.
 	 * @param ctx the parse tree
 	 */
-	void enterJinjaExpressionBody(TemplateParser.JinjaExpressionBodyContext ctx);
+	void enterJinjaExpressionBodyNode(TemplateParser.JinjaExpressionBodyNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#jinjaExpressionBody}.
+	 * Exit a parse tree produced by the {@code jinjaExpressionBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaExpressionBody}.
 	 * @param ctx the parse tree
 	 */
-	void exitJinjaExpressionBody(TemplateParser.JinjaExpressionBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code simpleJinjaBlock}
-	 * labeled alternative in {@link TemplateParser#jinjaBlock}.
-	 * @param ctx the parse tree
-	 */
-	void enterSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code simpleJinjaBlock}
-	 * labeled alternative in {@link TemplateParser#jinjaBlock}.
-	 * @param ctx the parse tree
-	 */
-	void exitSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx);
+	void exitJinjaExpressionBodyNode(TemplateParser.JinjaExpressionBodyNodeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code containerJinjaBlock}
 	 * labeled alternative in {@link TemplateParser#jinjaBlock}.
@@ -670,47 +644,65 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitContainerJinjaBlock(TemplateParser.ContainerJinjaBlockContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#jinjaSimple}.
+	 * Enter a parse tree produced by the {@code simpleJinjaBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaBlock}.
 	 * @param ctx the parse tree
 	 */
-	void enterJinjaSimple(TemplateParser.JinjaSimpleContext ctx);
+	void enterSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#jinjaSimple}.
+	 * Exit a parse tree produced by the {@code simpleJinjaBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaBlock}.
 	 * @param ctx the parse tree
 	 */
-	void exitJinjaSimple(TemplateParser.JinjaSimpleContext ctx);
+	void exitSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#jinjaSimpleBody}.
+	 * Enter a parse tree produced by the {@code jinjaSimpleNode}
+	 * labeled alternative in {@link TemplateParser#jinjaSimple}.
 	 * @param ctx the parse tree
 	 */
-	void enterJinjaSimpleBody(TemplateParser.JinjaSimpleBodyContext ctx);
+	void enterJinjaSimpleNode(TemplateParser.JinjaSimpleNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#jinjaSimpleBody}.
+	 * Exit a parse tree produced by the {@code jinjaSimpleNode}
+	 * labeled alternative in {@link TemplateParser#jinjaSimple}.
 	 * @param ctx the parse tree
 	 */
-	void exitJinjaSimpleBody(TemplateParser.JinjaSimpleBodyContext ctx);
+	void exitJinjaSimpleNode(TemplateParser.JinjaSimpleNodeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#jinjaContainer}.
+	 * Enter a parse tree produced by the {@code jinjaSimpleBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaSimpleBody}.
 	 * @param ctx the parse tree
 	 */
-	void enterJinjaContainer(TemplateParser.JinjaContainerContext ctx);
+	void enterJinjaSimpleBodyNode(TemplateParser.JinjaSimpleBodyNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#jinjaContainer}.
+	 * Exit a parse tree produced by the {@code jinjaSimpleBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaSimpleBody}.
 	 * @param ctx the parse tree
 	 */
-	void exitJinjaContainer(TemplateParser.JinjaContainerContext ctx);
+	void exitJinjaSimpleBodyNode(TemplateParser.JinjaSimpleBodyNodeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ifStatementStart}
-	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * Enter a parse tree produced by the {@code jinjaContainerNode}
+	 * labeled alternative in {@link TemplateParser#jinjaContainer}.
 	 * @param ctx the parse tree
 	 */
-	void enterIfStatementStart(TemplateParser.IfStatementStartContext ctx);
+	void enterJinjaContainerNode(TemplateParser.JinjaContainerNodeContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ifStatementStart}
-	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * Exit a parse tree produced by the {@code jinjaContainerNode}
+	 * labeled alternative in {@link TemplateParser#jinjaContainer}.
 	 * @param ctx the parse tree
 	 */
-	void exitIfStatementStart(TemplateParser.IfStatementStartContext ctx);
+	void exitJinjaContainerNode(TemplateParser.JinjaContainerNodeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaStatementBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaStatementBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaStatementBodyNode(TemplateParser.JinjaStatementBodyNodeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaStatementBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaStatementBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaStatementBodyNode(TemplateParser.JinjaStatementBodyNodeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code forStatementStart}
 	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
@@ -723,6 +715,18 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitForStatementStart(TemplateParser.ForStatementStartContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ifStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfStatementStart(TemplateParser.IfStatementStartContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ifStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfStatementStart(TemplateParser.IfStatementStartContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code blockStatementStart}
 	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
@@ -747,6 +751,30 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMacroStatementStart(TemplateParser.MacroStatementStartContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code elseStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 */
+	void enterElseStatementStart(TemplateParser.ElseStatementStartContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code elseStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 */
+	void exitElseStatementStart(TemplateParser.ElseStatementStartContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code elifStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 */
+	void enterElifStatementStart(TemplateParser.ElifStatementStartContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code elifStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 */
+	void exitElifStatementStart(TemplateParser.ElifStatementStartContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ifStatementEnd}
 	 * labeled alternative in {@link TemplateParser#jinjaContainerEnd}.
@@ -796,37 +824,267 @@ public interface TemplateParserListener extends ParseTreeListener {
 	 */
 	void exitMacroStatementEnd(TemplateParser.MacroStatementEndContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#jinjaKeyword}.
+	 * Enter a parse tree produced by the {@code jinjaKeywordIf}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 */
-	void enterJinjaKeyword(TemplateParser.JinjaKeywordContext ctx);
+	void enterJinjaKeywordIf(TemplateParser.JinjaKeywordIfContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#jinjaKeyword}.
+	 * Exit a parse tree produced by the {@code jinjaKeywordIf}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 */
-	void exitJinjaKeyword(TemplateParser.JinjaKeywordContext ctx);
+	void exitJinjaKeywordIf(TemplateParser.JinjaKeywordIfContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code malformedJinjaStatement}
-	 * labeled alternative in {@link TemplateParser#malformedJinja}.
+	 * Enter a parse tree produced by the {@code jinjaKeywordElse}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 */
-	void enterMalformedJinjaStatement(TemplateParser.MalformedJinjaStatementContext ctx);
+	void enterJinjaKeywordElse(TemplateParser.JinjaKeywordElseContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code malformedJinjaStatement}
-	 * labeled alternative in {@link TemplateParser#malformedJinja}.
+	 * Exit a parse tree produced by the {@code jinjaKeywordElse}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 */
-	void exitMalformedJinjaStatement(TemplateParser.MalformedJinjaStatementContext ctx);
+	void exitJinjaKeywordElse(TemplateParser.JinjaKeywordElseContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code malformedJinjaExpression}
-	 * labeled alternative in {@link TemplateParser#malformedJinja}.
+	 * Enter a parse tree produced by the {@code jinjaKeywordElif}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 */
-	void enterMalformedJinjaExpression(TemplateParser.MalformedJinjaExpressionContext ctx);
+	void enterJinjaKeywordElif(TemplateParser.JinjaKeywordElifContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code malformedJinjaExpression}
-	 * labeled alternative in {@link TemplateParser#malformedJinja}.
+	 * Exit a parse tree produced by the {@code jinjaKeywordElif}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 */
-	void exitMalformedJinjaExpression(TemplateParser.MalformedJinjaExpressionContext ctx);
+	void exitJinjaKeywordElif(TemplateParser.JinjaKeywordElifContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordEndIf}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordEndIf(TemplateParser.JinjaKeywordEndIfContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordEndIf}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordEndIf(TemplateParser.JinjaKeywordEndIfContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordFor}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordFor(TemplateParser.JinjaKeywordForContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordFor}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordFor(TemplateParser.JinjaKeywordForContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordEndFor}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordEndFor(TemplateParser.JinjaKeywordEndForContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordEndFor}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordEndFor(TemplateParser.JinjaKeywordEndForContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordBlock(TemplateParser.JinjaKeywordBlockContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordBlock(TemplateParser.JinjaKeywordBlockContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordEndBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordEndBlock(TemplateParser.JinjaKeywordEndBlockContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordEndBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordEndBlock(TemplateParser.JinjaKeywordEndBlockContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordMacro}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordMacro(TemplateParser.JinjaKeywordMacroContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordMacro}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordMacro(TemplateParser.JinjaKeywordMacroContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordEndMacro}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordEndMacro(TemplateParser.JinjaKeywordEndMacroContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordEndMacro}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordEndMacro(TemplateParser.JinjaKeywordEndMacroContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordSet}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordSet(TemplateParser.JinjaKeywordSetContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordSet}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordSet(TemplateParser.JinjaKeywordSetContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordInclude}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordInclude(TemplateParser.JinjaKeywordIncludeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordInclude}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordInclude(TemplateParser.JinjaKeywordIncludeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordExtends}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordExtends(TemplateParser.JinjaKeywordExtendsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordExtends}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordExtends(TemplateParser.JinjaKeywordExtendsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordImport}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordImport(TemplateParser.JinjaKeywordImportContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordImport}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordImport(TemplateParser.JinjaKeywordImportContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordEq}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordEq(TemplateParser.JinjaKeywordEqContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordEq}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordEq(TemplateParser.JinjaKeywordEqContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordNe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordNe(TemplateParser.JinjaKeywordNeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordNe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordNe(TemplateParser.JinjaKeywordNeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordGe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordGe(TemplateParser.JinjaKeywordGeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordGe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordGe(TemplateParser.JinjaKeywordGeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordLe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordLe(TemplateParser.JinjaKeywordLeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordLe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordLe(TemplateParser.JinjaKeywordLeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordAnd}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordAnd(TemplateParser.JinjaKeywordAndContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordAnd}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordAnd(TemplateParser.JinjaKeywordAndContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordOr}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordOr(TemplateParser.JinjaKeywordOrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordOr}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordOr(TemplateParser.JinjaKeywordOrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordNot}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordNot(TemplateParser.JinjaKeywordNotContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordNot}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordNot(TemplateParser.JinjaKeywordNotContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jinjaKeywordIn}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void enterJinjaKeywordIn(TemplateParser.JinjaKeywordInContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jinjaKeywordIn}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 */
+	void exitJinjaKeywordIn(TemplateParser.JinjaKeywordInContext ctx);
 }

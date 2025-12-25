@@ -29,18 +29,6 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterHtmlDocument(TemplateParser.HtmlDocumentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitHtmlDocument(TemplateParser.HtmlDocumentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterContent(TemplateParser.ContentContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -65,37 +53,37 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPlainText(TemplateParser.PlainTextContext ctx) { }
+	@Override public void enterTextContentNode(TemplateParser.TextContentNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPlainText(TemplateParser.PlainTextContext ctx) { }
+	@Override public void exitTextContentNode(TemplateParser.TextContentNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWhitespaceText(TemplateParser.WhitespaceTextContext ctx) { }
+	@Override public void enterHtmlDocument(TemplateParser.HtmlDocumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWhitespaceText(TemplateParser.WhitespaceTextContext ctx) { }
+	@Override public void exitHtmlDocument(TemplateParser.HtmlDocumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDoctype(TemplateParser.DoctypeContext ctx) { }
+	@Override public void enterDoctypeNode(TemplateParser.DoctypeNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDoctype(TemplateParser.DoctypeContext ctx) { }
+	@Override public void exitDoctypeNode(TemplateParser.DoctypeNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -113,37 +101,25 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnclosedHtmlElement(TemplateParser.UnclosedHtmlElementContext ctx) { }
+	@Override public void enterOpeningTagNode(TemplateParser.OpeningTagNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnclosedHtmlElement(TemplateParser.UnclosedHtmlElementContext ctx) { }
+	@Override public void exitOpeningTagNode(TemplateParser.OpeningTagNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOpeningTag(TemplateParser.OpeningTagContext ctx) { }
+	@Override public void enterClosingTagNode(TemplateParser.ClosingTagNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOpeningTag(TemplateParser.OpeningTagContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterClosingTag(TemplateParser.ClosingTagContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitClosingTag(TemplateParser.ClosingTagContext ctx) { }
+	@Override public void exitClosingTagNode(TemplateParser.ClosingTagNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -209,37 +185,25 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnmatchedClosingTag(TemplateParser.UnmatchedClosingTagContext ctx) { }
+	@Override public void enterStyleBlockNode(TemplateParser.StyleBlockNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnmatchedClosingTag(TemplateParser.UnmatchedClosingTagContext ctx) { }
+	@Override public void exitStyleBlockNode(TemplateParser.StyleBlockNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStyleBlock(TemplateParser.StyleBlockContext ctx) { }
+	@Override public void enterStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStyleBlock(TemplateParser.StyleBlockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStyleRule(TemplateParser.StyleRuleContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStyleRule(TemplateParser.StyleRuleContext ctx) { }
+	@Override public void exitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -389,37 +353,37 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclarationList(TemplateParser.DeclarationListContext ctx) { }
+	@Override public void enterDeclarationListNode(TemplateParser.DeclarationListNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclarationList(TemplateParser.DeclarationListContext ctx) { }
+	@Override public void exitDeclarationListNode(TemplateParser.DeclarationListNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaration(TemplateParser.DeclarationContext ctx) { }
+	@Override public void enterDeclarationNode(TemplateParser.DeclarationNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaration(TemplateParser.DeclarationContext ctx) { }
+	@Override public void exitDeclarationNode(TemplateParser.DeclarationNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclarationValue(TemplateParser.DeclarationValueContext ctx) { }
+	@Override public void enterDeclarationValueNode(TemplateParser.DeclarationValueNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclarationValue(TemplateParser.DeclarationValueContext ctx) { }
+	@Override public void exitDeclarationValueNode(TemplateParser.DeclarationValueNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -641,25 +605,25 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionCall(TemplateParser.FunctionCallContext ctx) { }
+	@Override public void enterFunctionCallNode(TemplateParser.FunctionCallNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunctionCall(TemplateParser.FunctionCallContext ctx) { }
+	@Override public void exitFunctionCallNode(TemplateParser.FunctionCallNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterValueList(TemplateParser.ValueListContext ctx) { }
+	@Override public void enterValueListNode(TemplateParser.ValueListNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitValueList(TemplateParser.ValueListContext ctx) { }
+	@Override public void exitValueListNode(TemplateParser.ValueListNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -677,25 +641,13 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterJinjaExpressionBody(TemplateParser.JinjaExpressionBodyContext ctx) { }
+	@Override public void enterJinjaExpressionBodyNode(TemplateParser.JinjaExpressionBodyNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitJinjaExpressionBody(TemplateParser.JinjaExpressionBodyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx) { }
+	@Override public void exitJinjaExpressionBodyNode(TemplateParser.JinjaExpressionBodyNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -713,49 +665,61 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterJinjaSimple(TemplateParser.JinjaSimpleContext ctx) { }
+	@Override public void enterSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitJinjaSimple(TemplateParser.JinjaSimpleContext ctx) { }
+	@Override public void exitSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterJinjaSimpleBody(TemplateParser.JinjaSimpleBodyContext ctx) { }
+	@Override public void enterJinjaSimpleNode(TemplateParser.JinjaSimpleNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitJinjaSimpleBody(TemplateParser.JinjaSimpleBodyContext ctx) { }
+	@Override public void exitJinjaSimpleNode(TemplateParser.JinjaSimpleNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterJinjaContainer(TemplateParser.JinjaContainerContext ctx) { }
+	@Override public void enterJinjaSimpleBodyNode(TemplateParser.JinjaSimpleBodyNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitJinjaContainer(TemplateParser.JinjaContainerContext ctx) { }
+	@Override public void exitJinjaSimpleBodyNode(TemplateParser.JinjaSimpleBodyNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfStatementStart(TemplateParser.IfStatementStartContext ctx) { }
+	@Override public void enterJinjaContainerNode(TemplateParser.JinjaContainerNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfStatementStart(TemplateParser.IfStatementStartContext ctx) { }
+	@Override public void exitJinjaContainerNode(TemplateParser.JinjaContainerNodeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaStatementBodyNode(TemplateParser.JinjaStatementBodyNodeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaStatementBodyNode(TemplateParser.JinjaStatementBodyNodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -768,6 +732,18 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitForStatementStart(TemplateParser.ForStatementStartContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIfStatementStart(TemplateParser.IfStatementStartContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfStatementStart(TemplateParser.IfStatementStartContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -792,6 +768,30 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMacroStatementStart(TemplateParser.MacroStatementStartContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterElseStatementStart(TemplateParser.ElseStatementStartContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElseStatementStart(TemplateParser.ElseStatementStartContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterElifStatementStart(TemplateParser.ElifStatementStartContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElifStatementStart(TemplateParser.ElifStatementStartContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -845,37 +845,265 @@ public class TemplateParserBaseListener implements TemplateParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterJinjaKeyword(TemplateParser.JinjaKeywordContext ctx) { }
+	@Override public void enterJinjaKeywordIf(TemplateParser.JinjaKeywordIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitJinjaKeyword(TemplateParser.JinjaKeywordContext ctx) { }
+	@Override public void exitJinjaKeywordIf(TemplateParser.JinjaKeywordIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMalformedJinjaStatement(TemplateParser.MalformedJinjaStatementContext ctx) { }
+	@Override public void enterJinjaKeywordElse(TemplateParser.JinjaKeywordElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMalformedJinjaStatement(TemplateParser.MalformedJinjaStatementContext ctx) { }
+	@Override public void exitJinjaKeywordElse(TemplateParser.JinjaKeywordElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMalformedJinjaExpression(TemplateParser.MalformedJinjaExpressionContext ctx) { }
+	@Override public void enterJinjaKeywordElif(TemplateParser.JinjaKeywordElifContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMalformedJinjaExpression(TemplateParser.MalformedJinjaExpressionContext ctx) { }
+	@Override public void exitJinjaKeywordElif(TemplateParser.JinjaKeywordElifContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordEndIf(TemplateParser.JinjaKeywordEndIfContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordEndIf(TemplateParser.JinjaKeywordEndIfContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordFor(TemplateParser.JinjaKeywordForContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordFor(TemplateParser.JinjaKeywordForContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordEndFor(TemplateParser.JinjaKeywordEndForContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordEndFor(TemplateParser.JinjaKeywordEndForContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordBlock(TemplateParser.JinjaKeywordBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordBlock(TemplateParser.JinjaKeywordBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordEndBlock(TemplateParser.JinjaKeywordEndBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordEndBlock(TemplateParser.JinjaKeywordEndBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordMacro(TemplateParser.JinjaKeywordMacroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordMacro(TemplateParser.JinjaKeywordMacroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordEndMacro(TemplateParser.JinjaKeywordEndMacroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordEndMacro(TemplateParser.JinjaKeywordEndMacroContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordSet(TemplateParser.JinjaKeywordSetContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordSet(TemplateParser.JinjaKeywordSetContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordInclude(TemplateParser.JinjaKeywordIncludeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordInclude(TemplateParser.JinjaKeywordIncludeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordExtends(TemplateParser.JinjaKeywordExtendsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordExtends(TemplateParser.JinjaKeywordExtendsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordImport(TemplateParser.JinjaKeywordImportContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordImport(TemplateParser.JinjaKeywordImportContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordEq(TemplateParser.JinjaKeywordEqContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordEq(TemplateParser.JinjaKeywordEqContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordNe(TemplateParser.JinjaKeywordNeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordNe(TemplateParser.JinjaKeywordNeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordGe(TemplateParser.JinjaKeywordGeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordGe(TemplateParser.JinjaKeywordGeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordLe(TemplateParser.JinjaKeywordLeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordLe(TemplateParser.JinjaKeywordLeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordAnd(TemplateParser.JinjaKeywordAndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordAnd(TemplateParser.JinjaKeywordAndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordOr(TemplateParser.JinjaKeywordOrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordOr(TemplateParser.JinjaKeywordOrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordNot(TemplateParser.JinjaKeywordNotContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordNot(TemplateParser.JinjaKeywordNotContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJinjaKeywordIn(TemplateParser.JinjaKeywordInContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJinjaKeywordIn(TemplateParser.JinjaKeywordInContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

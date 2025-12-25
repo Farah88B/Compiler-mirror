@@ -1,12 +1,12 @@
 lexer grammar TemplateLexer;
 
-// ================== CHANNELS ==================
+//  CHANNELS
 channels {
     WHITESPACE_CHANNEL,
     COMMENTS_CHANNEL
 }
 
-// ================== FRAGMENT RULES ==================
+// FRAGMENT RULES
 fragment DIGIT : [0-9];
 fragment LETTER : [a-zA-Z];
 fragment LETTER_OR_DIGIT : [a-zA-Z0-9_];
@@ -15,16 +15,25 @@ fragment WHITESPACE : [ \t\r\n];
 fragment TAG_START_CHAR : [a-zA-Z];
 fragment TAG_CHAR : [a-zA-Z0-9_-];
 
-/* ================== DOCTYPE ================== */
+/*  DOCTYPE
+ */
 DOCTYPE
     : '<!DOCTYPE' .*? '>'
     ;
 
-/* ================== HTML COMMENTS & CDATA ================== */
+/*
+ HTML COMMENTS & CDATA
+  */
 HTML_COMMENT: '<!--' .*? '-->' -> channel(COMMENTS_CHANNEL);
 CDATA: '<![CDATA[' .*? ']]>' -> skip;
 
-/* ================== JINJA ================== */
+/* OPENINGS
+ */
+
+STYLE_OPEN
+    : '<style>' -> pushMode(STYLE)
+    ;
+
 JINJA_STMT_OPEN
     : '{%' -> pushMode(JINJA)
     ;
@@ -33,34 +42,35 @@ JINJA_EXPR_OPEN
     : '{{' -> pushMode(JINJA_EXPR)
     ;
 
-// ================== JINJA COMMENT ==================
 JINJA_COMMENT
     : '{#' .*? '#}' -> channel(COMMENTS_CHANNEL)
     ;
 
-/* ================== STYLE ================== */
-STYLE_OPEN
-    : '<style>' -> pushMode(STYLE)
-    ;
 
-/* ================== HTML ================== */
 TAG_OPEN
     : '<' -> pushMode(TAG)
-    ;
-
-TEXT
-    : (~[<{ \t\r\n] | '<'(~[!/a-zA-Z]) | '{'(~[{%#]))+
     ;
 
 WS
     : WHITESPACE+ -> channel(WHITESPACE_CHANNEL)
     ;
 
+TEXT
+    : ( ~[<{\t\r\n]          // Normal text characters
+      | '<' ~[!a-zA-Z/]      // < not followed by tag start
+      | '{' ~[{%#]           // { not followed by Jinja start
+      )+
+    ;
+
+
+
 UNEXPECTED_CHAR
     : .
     ;
 
-/* ================== TAG MODE ================== */
+/*
+ TAG MODE
+  */
 mode TAG;
 
 TAG_NAME
@@ -95,7 +105,10 @@ TAG_WS
     : WHITESPACE+ -> channel(WHITESPACE_CHANNEL)
     ;
 
-/* ================== STYLE MODE ================== */
+
+/*
+ STYLE MODE
+  */
 mode STYLE;
 
 STYLE_CLOSE
@@ -121,7 +134,7 @@ CARET_EQUAL: '^=' ;
 DOLLAR_EQUAL: '$=' ;
 STAR_EQUAL: '*=' ;
 
-// ================== FRAGMENTS FOR STYLE ==================
+//  FRAGMENTS FOR STYLE
 fragment SIGN : [+-];
 fragment FRACTION : '.' DIGIT+;
 fragment EXPONENT : [eE] SIGN? DIGIT+;
@@ -141,20 +154,23 @@ COLOR_HEX: '#' HEX_DIGIT HEX_DIGIT HEX_DIGIT (HEX_DIGIT HEX_DIGIT HEX_DIGIT)? ;
 STYLE_IDENT : [a-zA-Z_-][a-zA-Z0-9_-]* ;
 STYLE_STRING: '"' (~["\\] | '\\' .)* '"' ;
 
-// ================== URL FUNCTION ==================
+
+// URL FUNCTION
 URL: 'url(' (~[()] | '(' ~[()]* ')')* ')' ;
 
 STYLE_WS    : WHITESPACE+ -> channel(WHITESPACE_CHANNEL) ;
-STYLE_OTHER : . ;   // catch-all
+STYLE_OTHER : . ;
 
-/* ================== JINJA STATEMENT MODE ================== */
+/*
+JINJA STATEMENT MODE
+ */
 mode JINJA;
 
 JINJA_STMT_CLOSE
     : '%}' -> popMode
     ;
 
-// Jinja keywords
+// Keywords
 JINJA_IF: 'if';
 JINJA_ELSE: 'else';
 JINJA_ELIF: 'elif';
@@ -170,11 +186,9 @@ JINJA_INCLUDE: 'include';
 JINJA_EXTENDS: 'extends';
 JINJA_IMPORT: 'import';
 
-// Jinja operators that might be used in parser rules
+// Operators
 JINJA_EQ: '==';
 JINJA_NE: '!=';
-JINJA_GT: '>';
-JINJA_LT: '<';
 JINJA_GE: '>=';
 JINJA_LE: '<=';
 JINJA_AND: 'and';
@@ -182,12 +196,9 @@ JINJA_OR: 'or';
 JINJA_NOT: 'not';
 JINJA_IN: 'in';
 
-// ================== FRAGMENTS FOR JINJA ==================
-fragment JINJA_IDENT_START : [a-zA-Z_];
-fragment JINJA_IDENT_CHAR : [a-zA-Z0-9_];
-
+// Identifiers & values
 JINJA_IDENT
-    : JINJA_IDENT_START JINJA_IDENT_CHAR*
+    : [a-zA-Z_][a-zA-Z0-9_]*
     ;
 
 JINJA_STRING
@@ -211,12 +222,10 @@ JINJA_WS
     : WHITESPACE+ -> channel(WHITESPACE_CHANNEL)
     ;
 
-// ================== FIXED JINJA BODY - cannot be empty ==================
-JINJA_BODY
-    : (~[%] | '%' ~'}')+  // Must match at least one character
-    ;
 
-/* ================== JINJA EXPRESSION MODE ================== */
+/*
+    JINJA EXPRESSION MODE
+  */
 mode JINJA_EXPR;
 
 JINJA_EXPR_CLOSE
@@ -235,7 +244,7 @@ JINJA_EXPR_OR: 'or';
 JINJA_EXPR_NOT: 'not';
 JINJA_EXPR_IN: 'in';
 
-// ================== FRAGMENTS FOR JINJA EXPR ==================
+//  FRAGMENTS FOR JINJA EXPR
 fragment JINJA_EXPR_IDENT_START : [a-zA-Z_];
 fragment JINJA_EXPR_IDENT_CHAR : [a-zA-Z0-9_];
 
@@ -263,8 +272,3 @@ JINJA_EXPR_PUNCT
 JINJA_EXPR_WS
     : WHITESPACE+ -> channel(WHITESPACE_CHANNEL)
     ;
-
-// ================== FIXED JINJA EXPR BODY - cannot be empty ==================
-JINJA_EXPR_BODY
-    : (~[}] | '}' ~'}')+  // Must match at least one character
-         ;

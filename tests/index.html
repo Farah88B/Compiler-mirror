@@ -1,20 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Products{% endblock %}
 
 {% block content %}
-<h2>Product List</h2>
+<h2>Products</h2>
 
-{% for product in products %}
-<div class="card">
-    <h3>{{ product.name }}</h3>
-    <p>Price: ${{ product.price }}</p>
-
-    <a class="btn" href="{{ url_for('product_details', product_id=product.id) }}">
-        View Details
-    </a>
+{% for p in products %}
+<div>
+    <p>{{ p.name }}</p>
+    <p>{{ p.price }}</p>
 </div>
-{% else %}
-<p>No products available.</p>
 {% endfor %}
 
 {% endblock %}

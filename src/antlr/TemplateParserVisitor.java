@@ -17,12 +17,6 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPage(TemplateParser.PageContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#htmlDocument}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitHtmlDocument(TemplateParser.HtmlDocumentContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link TemplateParser#content}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -35,25 +29,25 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNode(TemplateParser.NodeContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code plainText}
+	 * Visit a parse tree produced by the {@code textContentNode}
 	 * labeled alternative in {@link TemplateParser#textContent}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPlainText(TemplateParser.PlainTextContext ctx);
+	T visitTextContentNode(TemplateParser.TextContentNodeContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code whitespaceText}
-	 * labeled alternative in {@link TemplateParser#textContent}.
+	 * Visit a parse tree produced by {@link TemplateParser#htmlDocument}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitWhitespaceText(TemplateParser.WhitespaceTextContext ctx);
+	T visitHtmlDocument(TemplateParser.HtmlDocumentContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#doctype}.
+	 * Visit a parse tree produced by the {@code doctypeNode}
+	 * labeled alternative in {@link TemplateParser#doctype}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDoctype(TemplateParser.DoctypeContext ctx);
+	T visitDoctypeNode(TemplateParser.DoctypeNodeContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code pairedHtmlElement}
 	 * labeled alternative in {@link TemplateParser#htmlElement}.
@@ -62,24 +56,19 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code unclosedHtmlElement}
-	 * labeled alternative in {@link TemplateParser#htmlElement}.
+	 * Visit a parse tree produced by the {@code openingTagNode}
+	 * labeled alternative in {@link TemplateParser#openingTag}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnclosedHtmlElement(TemplateParser.UnclosedHtmlElementContext ctx);
+	T visitOpeningTagNode(TemplateParser.OpeningTagNodeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#openingTag}.
+	 * Visit a parse tree produced by the {@code closingTagNode}
+	 * labeled alternative in {@link TemplateParser#closingTag}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOpeningTag(TemplateParser.OpeningTagContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link TemplateParser#closingTag}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClosingTag(TemplateParser.ClosingTagContext ctx);
+	T visitClosingTagNode(TemplateParser.ClosingTagNodeContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code selfClosingElement}
 	 * labeled alternative in {@link TemplateParser#selfClosingTag}.
@@ -116,24 +105,19 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitUnquotedAttribute(TemplateParser.UnquotedAttributeContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code unmatchedClosingTag}
-	 * labeled alternative in {@link TemplateParser#unmatchedTag}.
+	 * Visit a parse tree produced by the {@code styleBlockNode}
+	 * labeled alternative in {@link TemplateParser#styleBlock}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnmatchedClosingTag(TemplateParser.UnmatchedClosingTagContext ctx);
+	T visitStyleBlockNode(TemplateParser.StyleBlockNodeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#styleBlock}.
+	 * Visit a parse tree produced by the {@code styleRuleNode}
+	 * labeled alternative in {@link TemplateParser#styleRule}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStyleBlock(TemplateParser.StyleBlockContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link TemplateParser#styleRule}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStyleRule(TemplateParser.StyleRuleContext ctx);
+	T visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link TemplateParser#selectorList}.
 	 * @param ctx the parse tree
@@ -217,23 +201,26 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitComparisonAttributeSelector(TemplateParser.ComparisonAttributeSelectorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#declarationList}.
+	 * Visit a parse tree produced by the {@code declarationListNode}
+	 * labeled alternative in {@link TemplateParser#declarationList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclarationList(TemplateParser.DeclarationListContext ctx);
+	T visitDeclarationListNode(TemplateParser.DeclarationListNodeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#declaration}.
+	 * Visit a parse tree produced by the {@code declarationNode}
+	 * labeled alternative in {@link TemplateParser#declaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaration(TemplateParser.DeclarationContext ctx);
+	T visitDeclarationNode(TemplateParser.DeclarationNodeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#declarationValue}.
+	 * Visit a parse tree produced by the {@code declarationValueNode}
+	 * labeled alternative in {@link TemplateParser#declarationValue}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclarationValue(TemplateParser.DeclarationValueContext ctx);
+	T visitDeclarationValueNode(TemplateParser.DeclarationValueNodeContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code stringStyleValue}
 	 * labeled alternative in {@link TemplateParser#styleValuePart}.
@@ -361,17 +348,19 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDecimalNumType(TemplateParser.DecimalNumTypeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#functionCall}.
+	 * Visit a parse tree produced by the {@code functionCallNode}
+	 * labeled alternative in {@link TemplateParser#functionCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunctionCall(TemplateParser.FunctionCallContext ctx);
+	T visitFunctionCallNode(TemplateParser.FunctionCallNodeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#valueList}.
+	 * Visit a parse tree produced by the {@code valueListNode}
+	 * labeled alternative in {@link TemplateParser#valueList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitValueList(TemplateParser.ValueListContext ctx);
+	T visitValueListNode(TemplateParser.ValueListNodeContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code jinjaExpression}
 	 * labeled alternative in {@link TemplateParser#jinjaExpr}.
@@ -380,18 +369,12 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJinjaExpression(TemplateParser.JinjaExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#jinjaExpressionBody}.
+	 * Visit a parse tree produced by the {@code jinjaExpressionBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaExpressionBody}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJinjaExpressionBody(TemplateParser.JinjaExpressionBodyContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code simpleJinjaBlock}
-	 * labeled alternative in {@link TemplateParser#jinjaBlock}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx);
+	T visitJinjaExpressionBodyNode(TemplateParser.JinjaExpressionBodyNodeContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code containerJinjaBlock}
 	 * labeled alternative in {@link TemplateParser#jinjaBlock}.
@@ -400,30 +383,40 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitContainerJinjaBlock(TemplateParser.ContainerJinjaBlockContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#jinjaSimple}.
+	 * Visit a parse tree produced by the {@code simpleJinjaBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaBlock}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJinjaSimple(TemplateParser.JinjaSimpleContext ctx);
+	T visitSimpleJinjaBlock(TemplateParser.SimpleJinjaBlockContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#jinjaSimpleBody}.
+	 * Visit a parse tree produced by the {@code jinjaSimpleNode}
+	 * labeled alternative in {@link TemplateParser#jinjaSimple}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJinjaSimpleBody(TemplateParser.JinjaSimpleBodyContext ctx);
+	T visitJinjaSimpleNode(TemplateParser.JinjaSimpleNodeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#jinjaContainer}.
+	 * Visit a parse tree produced by the {@code jinjaSimpleBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaSimpleBody}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJinjaContainer(TemplateParser.JinjaContainerContext ctx);
+	T visitJinjaSimpleBodyNode(TemplateParser.JinjaSimpleBodyNodeContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ifStatementStart}
-	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * Visit a parse tree produced by the {@code jinjaContainerNode}
+	 * labeled alternative in {@link TemplateParser#jinjaContainer}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIfStatementStart(TemplateParser.IfStatementStartContext ctx);
+	T visitJinjaContainerNode(TemplateParser.JinjaContainerNodeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaStatementBodyNode}
+	 * labeled alternative in {@link TemplateParser#jinjaStatementBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaStatementBodyNode(TemplateParser.JinjaStatementBodyNodeContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code forStatementStart}
 	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
@@ -431,6 +424,13 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitForStatementStart(TemplateParser.ForStatementStartContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ifStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfStatementStart(TemplateParser.IfStatementStartContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code blockStatementStart}
 	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
@@ -445,6 +445,20 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMacroStatementStart(TemplateParser.MacroStatementStartContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code elseStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElseStatementStart(TemplateParser.ElseStatementStartContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code elifStatementStart}
+	 * labeled alternative in {@link TemplateParser#jinjaContainerStart}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElifStatementStart(TemplateParser.ElifStatementStartContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ifStatementEnd}
 	 * labeled alternative in {@link TemplateParser#jinjaContainerEnd}.
@@ -474,23 +488,157 @@ public interface TemplateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMacroStatementEnd(TemplateParser.MacroStatementEndContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link TemplateParser#jinjaKeyword}.
+	 * Visit a parse tree produced by the {@code jinjaKeywordIf}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJinjaKeyword(TemplateParser.JinjaKeywordContext ctx);
+	T visitJinjaKeywordIf(TemplateParser.JinjaKeywordIfContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code malformedJinjaStatement}
-	 * labeled alternative in {@link TemplateParser#malformedJinja}.
+	 * Visit a parse tree produced by the {@code jinjaKeywordElse}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMalformedJinjaStatement(TemplateParser.MalformedJinjaStatementContext ctx);
+	T visitJinjaKeywordElse(TemplateParser.JinjaKeywordElseContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code malformedJinjaExpression}
-	 * labeled alternative in {@link TemplateParser#malformedJinja}.
+	 * Visit a parse tree produced by the {@code jinjaKeywordElif}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMalformedJinjaExpression(TemplateParser.MalformedJinjaExpressionContext ctx);
+	T visitJinjaKeywordElif(TemplateParser.JinjaKeywordElifContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordEndIf}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordEndIf(TemplateParser.JinjaKeywordEndIfContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordFor}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordFor(TemplateParser.JinjaKeywordForContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordEndFor}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordEndFor(TemplateParser.JinjaKeywordEndForContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordBlock(TemplateParser.JinjaKeywordBlockContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordEndBlock}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordEndBlock(TemplateParser.JinjaKeywordEndBlockContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordMacro}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordMacro(TemplateParser.JinjaKeywordMacroContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordEndMacro}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordEndMacro(TemplateParser.JinjaKeywordEndMacroContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordSet}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordSet(TemplateParser.JinjaKeywordSetContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordInclude}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordInclude(TemplateParser.JinjaKeywordIncludeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordExtends}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordExtends(TemplateParser.JinjaKeywordExtendsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordImport}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordImport(TemplateParser.JinjaKeywordImportContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordEq}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordEq(TemplateParser.JinjaKeywordEqContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordNe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordNe(TemplateParser.JinjaKeywordNeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordGe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordGe(TemplateParser.JinjaKeywordGeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordLe}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordLe(TemplateParser.JinjaKeywordLeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordAnd}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordAnd(TemplateParser.JinjaKeywordAndContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordOr}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordOr(TemplateParser.JinjaKeywordOrContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordNot}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordNot(TemplateParser.JinjaKeywordNotContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jinjaKeywordIn}
+	 * labeled alternative in {@link TemplateParser#jinjaKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJinjaKeywordIn(TemplateParser.JinjaKeywordInContext ctx);
 }
