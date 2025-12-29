@@ -35,7 +35,7 @@ public class Main {
         ParseTree tree = parser.page();
 
         // ================== طباعة Parse Tree ==================
-        System.out.println(" PARSE TREE ");
+        System.out.println("---------- PARSE TREE ---------- ");
         System.out.println(Trees.toStringTree(tree, parser));
 
         // ================== بناء AST ==================
@@ -43,7 +43,7 @@ public class Main {
         PageNode ast = (PageNode) visitor.visit(tree);
 
         // ================== طباعة AST ==================
-        System.out.println("\n AST ");
+        System.out.println("\n ----------- AST ----------");
         ast.print("");
     }
 }

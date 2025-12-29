@@ -7,7 +7,6 @@ public class HtmlElementNode extends ASTNode {
         super("HtmlElement <" + tagName + ">", line);
         this.tagName = tagName;
     }
-
     public String getTagName() {
         return tagName;
     }
@@ -25,7 +24,7 @@ public class HtmlElementNode extends ASTNode {
         } else {
             // العناصر العادية (Paired Elements)
 
-            System.out.println(indent + "Opening <" + tagName + "> (line number " + line + ")");
+            System.out.println(indent + "└── Opening <" + tagName + "> (line number " + line + ")");
 
             // طباعة الأبناء (Attributes + Text + Child Elements)
             for (ASTNode child : children) {
@@ -33,7 +32,7 @@ public class HtmlElementNode extends ASTNode {
             }
 
             // طباعة وسم الإغلاق
-            System.out.println(indent + "Closing </" + tagName + "> (line number " + line + ")");
+            System.out.println(indent + "└── Closing </" + tagName + "> (line number " + line + ")");
         }
     }
     // دالة مساعدة لتحديد الوسوم الفارغة
