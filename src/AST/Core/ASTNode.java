@@ -22,7 +22,7 @@ public abstract class ASTNode {
     }
 
     public void print(String indent) {
-        System.out.println(indent + nodeName + " (line number " + line + ")");
+        System.out.println(indent+ nodeName + " (line number " + line + ")");
         for (ASTNode child : children) {
             child.print(indent + "  ");
         }
