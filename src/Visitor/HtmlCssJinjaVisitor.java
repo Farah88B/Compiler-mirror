@@ -97,8 +97,11 @@ public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
 
     @Override
     public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
-        StyleRuleNode rule = new StyleRuleNode("SelectorList", ctx.start.getLine());
-
+        StyleRuleNode rule = new StyleRuleNode("Rule", ctx.start.getLine());
+//        String selectorsText = ctx.selectorList().getText();
+//
+//        // الآن اسم القاعدة سيكون: StyleRule body  (أو أي محدد موجود)
+//        StyleRuleNode rule = new StyleRuleNode(selectorsText, ctx.start.getLine());
         // زيارة المحددات
         for (TemplateParser.SelectorContext selCtx : ctx.selectorList().selector()) {
             rule.addChild(visit(selCtx));

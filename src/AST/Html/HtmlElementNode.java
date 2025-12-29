@@ -15,7 +15,7 @@ public class HtmlElementNode extends ASTNode {
         // التحقق مما إذا كان العنصر ذاتي الإغلاق (Self-Closing)
         if (isVoidTag(tagName)) {
             // طباعة الوسم الذاتي مع رقم السطر
-            System.out.println(indent + "Self-Closing <" + tagName + "/> (line number " + line + ")");
+            System.out.println(indent + "HtmlElement - Self-Closing <" + tagName + "/> (line number " + line + ")");
 
             // طباعة السمات (Attributes) الموجودة داخله كأبناء
             for (ASTNode child : children) {
@@ -24,7 +24,7 @@ public class HtmlElementNode extends ASTNode {
         } else {
             // العناصر العادية (Paired Elements)
 
-            System.out.println(indent + "└── Opening <" + tagName + "> (line number " + line + ")");
+            System.out.println(indent + "└── HtmlElement - Opening <" + tagName + "> (line number " + line + ")");
 
             // طباعة الأبناء (Attributes + Text + Child Elements)
             for (ASTNode child : children) {
@@ -32,7 +32,7 @@ public class HtmlElementNode extends ASTNode {
             }
 
             // طباعة وسم الإغلاق
-            System.out.println(indent + "└── Closing </" + tagName + "> (line number " + line + ")");
+            System.out.println(indent + "└── HtmlElement - Closing </" + tagName + "> (line number " + line + ")");
         }
     }
     // دالة مساعدة لتحديد الوسوم الفارغة

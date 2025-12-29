@@ -10,7 +10,7 @@ public class StyleBlockNode extends ASTNode {
     @Override
     public void print(String indent) {
 
-        System.out.println(indent + "└── StyleBlock open <style>");
+        System.out.println(indent + "└── StyleBlock - open <style>");
 
 
         for (ASTNode child : children) {
@@ -18,7 +18,7 @@ public class StyleBlockNode extends ASTNode {
         }
 
 
-        System.out.println(indent + "└── StyleBlock close </style>");
+        System.out.println(indent + "└── StyleBlock - close </style>");
     }
 }
 
