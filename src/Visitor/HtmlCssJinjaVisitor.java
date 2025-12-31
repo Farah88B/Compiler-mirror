@@ -17,7 +17,9 @@ public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
     public ASTNode visitPage(TemplateParser.PageContext ctx) {
 
         PageNode page = new PageNode(ctx.start.getLine());
-
+        if (ctx.doctype() != null) {
+            page.addChild(visit(ctx.doctype()));
+        }
         for (int i = 0; i < ctx.content().size(); i++) {
             page.addChild(visit(ctx.content(i)));
         }
@@ -36,38 +38,71 @@ public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
         return new DoctypeNode(ctx.getText(), ctx.start.getLine());
     }
 
+//    @Override
+//    public ASTNode visitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ctx) {
+//        String tagName = ctx.openingTag().getChild(1).getText();
+//        HtmlElementNode element = new HtmlElementNode(tagName, ctx.start.getLine());
+//
+//        // إضافة السمات (Attributes)
+//        for (int i = 0; i < ctx.openingTag().getChildCount(); i++) {
+//            if (ctx.openingTag().getChild(i) instanceof TemplateParser.AttributeContext) {
+//                element.addChild(visit((TemplateParser.AttributeContext) ctx.openingTag().getChild(i)));
+//            }
+//        }
+//
+//        // إضافة المحتوى (Children)
+//        for (int i = 0; i < ctx.content().size(); i++) {
+//            element.addChild(visit(ctx.content(i)));
+//        }
+//
+//        return element;
+//    }
+@Override
+public ASTNode visitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ctx) {
+
+    String tagName = ctx.openingTag().getChild(1).getText();
+
+    HtmlElementNode element =
+            new HtmlElementNode(tagName, ctx.openingTag().start.getLine());
+
+    // ✅ 1) إضافة الـ attributes
+    for (int i = 0; i < ctx.openingTag().getChildCount(); i++) {
+        if (ctx.openingTag().getChild(i) instanceof TemplateParser.AttributeContext) {
+            element.addChild(
+                    visit((TemplateParser.AttributeContext) ctx.openingTag().getChild(i))
+            );
+        }
+    }
+
+    // ✅ 2) إضافة المحتوى الداخلي
+    for (TemplateParser.ContentContext c : ctx.content()) {
+        element.addChild(visit(c));
+    }
+
+    // ✅ 3) سطر الإغلاق
+    element.setClosingLine(ctx.closingTag().start.getLine());
+
+    return element;
+}
+    // ✅ التعديل 2: دالة جديدة لمعالجة الوسوم ذاتية الإغلاق (مثل input, img, br)
     @Override
-    public ASTNode visitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ctx) {
-        String tagName = ctx.openingTag().getChild(1).getText();
+    public ASTNode visitSelfClosingElement(TemplateParser.SelfClosingElementContext ctx) {
+
+        // استخراج اسم الوسم
+        String tagName = ctx.tagName.getText();
+
+        // إنشاء العقدة (نستخدم HtmlElementNode لأنه قادر على التعامل مع Void Tags)
         HtmlElementNode element = new HtmlElementNode(tagName, ctx.start.getLine());
 
-        // إضافة السمات (Attributes)
-        for (int i = 0; i < ctx.openingTag().getChildCount(); i++) {
-            if (ctx.openingTag().getChild(i) instanceof TemplateParser.AttributeContext) {
-                element.addChild(visit((TemplateParser.AttributeContext) ctx.openingTag().getChild(i)));
+        // ✅ إضافة السمات (Attributes)
+        if (ctx.attrs != null) {
+            for (TemplateParser.AttributeContext attrCtx : ctx.attribute()) {
+                element.addChild(visit(attrCtx));
             }
         }
 
-        // إضافة المحتوى (Children)
-        for (int i = 0; i < ctx.content().size(); i++) {
-            element.addChild(visit(ctx.content(i)));
-        }
-
         return element;
     }
-
-    @Override
-    public ASTNode visitSelfClosingElement(TemplateParser.SelfClosingElementContext ctx) {
-        String tagName = ctx.tagName.getText();
-        HtmlElementNode element = new HtmlElementNode(tagName, ctx.start.getLine());
-
-        for (int i = 0; i < ctx.attribute().size(); i++) {
-            element.addChild(visit(ctx.attribute(i)));
-        }
-
-        return element;
-    }
-
     @Override
     public ASTNode visitHtmlAttribute(TemplateParser.HtmlAttributeContext ctx) {
         String name = ctx.attrName.getText();
@@ -86,32 +121,59 @@ public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
 
     @Override
     public ASTNode visitStyleBlockNode(TemplateParser.StyleBlockNodeContext ctx) {
-        StyleBlockNode block = new StyleBlockNode(ctx.start.getLine());
+
+        StyleBlockNode block =
+                new StyleBlockNode(ctx.STYLE_OPEN().getSymbol().getLine());
 
         for (TemplateParser.StyleRuleContext ruleCtx : ctx.styleRule()) {
             block.addChild(visit(ruleCtx));
         }
 
+        // سطر إغلاق </style>
+        block.setClosingLine(ctx.STYLE_CLOSE().getSymbol().getLine());
+
         return block;
     }
 
-    @Override
-    public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
-        StyleRuleNode rule = new StyleRuleNode("Rule", ctx.start.getLine());
-//        String selectorsText = ctx.selectorList().getText();
+
+//    @Override
+//    public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
+//        StyleRuleNode rule = new StyleRuleNode("Rule", ctx.start.getLine());
+////        String selectorsText = ctx.selectorList().getText();
+////
+////        // الآن اسم القاعدة سيكون: StyleRule body  (أو أي محدد موجود)
+////        StyleRuleNode rule = new StyleRuleNode(selectorsText, ctx.start.getLine());
+//        // زيارة المحددات
+//        for (TemplateParser.SelectorContext selCtx : ctx.selectorList().selector()) {
+//            rule.addChild(visit(selCtx));
+//        }
 //
-//        // الآن اسم القاعدة سيكون: StyleRule body  (أو أي محدد موجود)
-//        StyleRuleNode rule = new StyleRuleNode(selectorsText, ctx.start.getLine());
-        // زيارة المحددات
+//        // زيارة التصريحات
+//        rule.addChild(visit(ctx.declarationList()));
+//
+//        return rule;
+//    }
+
+
+@Override
+public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
+    StyleRuleNode rule = new StyleRuleNode("Rule", ctx.start.getLine());
+
+    // ✅ حماية إضافية: تأكد أن قائمة المحددات ليست فارغة
+    if (ctx.selectorList() != null) {
         for (TemplateParser.SelectorContext selCtx : ctx.selectorList().selector()) {
-            rule.addChild(visit(selCtx));
+            ASTNode child = visit(selCtx);
+            if (child != null) rule.addChild(child);
         }
-
-        // زيارة التصريحات
-        rule.addChild(visit(ctx.declarationList()));
-
-        return rule;
     }
+
+    // ✅ حماية إضافية: تأكد أن قائمة التصريحات ليست فارغة
+    if (ctx.declarationList() != null) {
+        rule.addChild(visit(ctx.declarationList()));
+    }
+
+    return rule;
+}
 
     @Override
     public ASTNode visitDeclarationListNode(TemplateParser.DeclarationListNodeContext ctx) {
@@ -263,13 +325,12 @@ public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
 
     @Override
     public ASTNode visitFunctionStyleValue(TemplateParser.FunctionStyleValueContext ctx) {
-        String funcName = ctx.functionCall().getChild(0).getText();
-        return new FunctionCallCssValue(funcName, ctx.start.getLine());
+        return new FunctionCallCssValue(ctx.functionCall().getText(), ctx.start.getLine());
     }
 
     @Override
     public ASTNode visitUrlStyleValue(TemplateParser.UrlStyleValueContext ctx) {
-        return new FunctionCallCssValue("url", ctx.start.getLine());
+        return new FunctionCallCssValue(ctx.URL().getText(), ctx.start.getLine());
     }
 
     /* ================= JINJA STRUCTURE SECTION ================= */
@@ -287,6 +348,8 @@ public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
         if (body.startsWith("extends")) return new JinjaExtendsNode(body, line);
         if (body.startsWith("include")) return new JinjaIncludeNode(body, line);
         if (body.startsWith("set")) return new JinjaSetNode(body, line);
+        if (body.startsWith("elif")) return new JinjaElifNode(body, line);
+        if (body.startsWith("else")) return new JinjaElseNode(line);
 
         return new JinjaNode("JinjaSimple " + body, line) {};
     }

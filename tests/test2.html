@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimate Project Test</title>
+
+    <style>
+
+        .btn-primary, .nav-item {
+            display: inline-block;
+            padding: 10px;
+            color: #00aaff;
+        }
+
+
+        [type="password"] {
+            border-width: 2px;
+            border-style: solid;
+            border-color: #ccc;
+        }
+
+
+        .btn-primary:hover {
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+
+        .form-label::after {
+            content: ":";
+            font-weight: bold;
+        }
+
+
+        .hero-section {
+            background-image: url("background.jpg");
+            width: 100vw;
+            height: 50vh;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+
+{% set user_status = "active" %}
+
+<div class="hero-section">
+    <h1>Welcome to the Compiler Project</h1>
+</div>
+
+<div class="container">
+
+
+    {% if user_status == "active" %}
+    <p class="nav-item">User is Active</p>
+    {% elif user_status == "pending" %}
+    <p class="nav-item">User is Pending</p>
+    {% else %}
+    <p>User is Inactive</p>
+    {% endif %}
+
+
+    <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" name="pwd" placeholder="Enter password" />
+        <br />
+        <input type="submit" value="Login" />
+    </div>
+
+    <hr />
+
+
+    <ul class="nav-item">
+        {% for item in menu_list %}
+        <li>
+            <a href="{{ item.url }}">
+                {{ item.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+</body>
+</html>
