@@ -347,9 +347,23 @@ public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
 
         if (body.startsWith("extends")) return new JinjaExtendsNode(body, line);
         if (body.startsWith("include")) return new JinjaIncludeNode(body, line);
+        if (body.startsWith("import")) return new JinjaImportNode(body, line);
         if (body.startsWith("set")) return new JinjaSetNode(body, line);
         if (body.startsWith("elif")) return new JinjaElifNode(body, line);
         if (body.startsWith("else")) return new JinjaElseNode(line);
+        if (body.startsWith("macro")) {
+
+            String cleanBody = body.replace("macro", "").trim();
+
+
+            String macroName = cleanBody.split("\\(")[0].trim();
+
+            return new JinjaMacroNode(macroName, line);
+        }
+
+        if (body.startsWith("endmacro")) {
+            return new JinjaEndMacroNode(line);
+        }
 
         return new JinjaNode("JinjaSimple " + body, line) {};
     }
