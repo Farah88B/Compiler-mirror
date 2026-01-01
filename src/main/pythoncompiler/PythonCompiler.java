@@ -41,7 +41,7 @@ public class PythonCompiler {
             System.out.println(" AST Generation failed");
         }
 
-//        System.out.println(tree.toStringTree(parser));
+        System.out.println(tree.toStringTree(parser));
 
 
     }

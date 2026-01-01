@@ -629,4 +629,16 @@ public ASTNode visitIfElseNode(PythonParser.IfElseNodeContext ctx) {
         argNode.addChild(visit(ctx.expression()));
         return argNode;
     }
+
+
+    @Override public ASTNode visitFactorPrimary(PythonParser.FactorPrimaryContext ctx) {
+        return visit(ctx.primary());
+    }
+
+    @Override
+    public ASTNode visitEmptyLine(PythonParser.EmptyLineContext ctx) {
+        return null;
+    }
+
 }
+
