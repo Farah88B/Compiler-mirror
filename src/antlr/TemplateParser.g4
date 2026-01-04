@@ -258,7 +258,7 @@ jinjaSimpleBody
     ;
 
 
-  // Container Jinja statements (with body) - FIXED to use content, not node
+  // Container Jinja statements (with body)
  jinjaContainer
      : JINJA_STMT_OPEN start=jinjaContainerStart JINJA_STMT_CLOSE
        content*
