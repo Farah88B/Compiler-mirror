@@ -1,10 +1,10 @@
-
-
 import AST.Core.PageNode;
 import Visitor.HtmlCssJinjaVisitor;
 
 import antlr.TemplateLexer;
 import antlr.TemplateParser;
+import main.pythoncompiler.PythonCompiler;
+
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -14,8 +14,13 @@ import org.antlr.v4.runtime.tree.Trees;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, Exception {
 
+        // ================== Python Compiler ==================
+        PythonCompiler compiler = new PythonCompiler();
+        compiler.compile("src/tests/app1.py");
+
+        // ================== HTML/CSS/Jinja Parser ==================
         // مسار ملف الاختبار
         String source = "tests/base.html";
 
@@ -45,5 +50,7 @@ public class Main {
         // ================== طباعة AST ==================
         System.out.println("\n ----------- AST ----------");
         ast.print("");
+
+
     }
 }
