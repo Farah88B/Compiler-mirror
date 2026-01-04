@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> oldrepo/finalPython
   <component name="ANTLRGenerationPreferences">
     <option name="perGrammarGenerationSettings">
       <list>
@@ -16,6 +20,11 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> cd5c204f0d5447143502b0b64b13260cca2e87f8
+>>>>>>> oldrepo/finalPython
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -33,7 +42,15 @@
       </profile-state>
     </entry>
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true" project-jdk-name="25 (4)" project-jdk-type="JavaSDK">
+=======
+<<<<<<< HEAD
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true" project-jdk-name="25 (4)" project-jdk-type="JavaSDK">
+=======
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true" project-jdk-name="25" project-jdk-type="JavaSDK">
+>>>>>>> cd5c204f0d5447143502b0b64b13260cca2e87f8
+>>>>>>> oldrepo/finalPython
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

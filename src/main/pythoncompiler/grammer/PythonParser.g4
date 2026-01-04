@@ -2,12 +2,20 @@ parser grammar PythonParser;
 
 options { tokenVocab=PythonLexer; }
 
+<<<<<<< HEAD
 /*  Program  */
+=======
+/* ========= Program ========= */
+>>>>>>> oldrepo/finalPython
 program
     : stmt* EOF                          #programRoot
     ;
 
+<<<<<<< HEAD
 /*  Statements */
+=======
+/* ========= Statements ========= */
+>>>>>>> oldrepo/finalPython
 stmt
     : importStmt                         #importStmtNode
     | assignmentStmt                     #assignStmtNode
@@ -25,18 +33,30 @@ stmt
     | emptyStmt                          #emptyStmtNode
     ;
 
+<<<<<<< HEAD
 /*  Empty */
+=======
+/* ========= Empty ========= */
+>>>>>>> oldrepo/finalPython
 emptyStmt
     : NEWLINE                            #emptyLine
     ;
 
+<<<<<<< HEAD
 /*  Import  */
+=======
+/* ========= Import ========= */
+>>>>>>> oldrepo/finalPython
 importStmt
     : FROM IDENTIFIER IMPORT IDENTIFIER (COMMA IDENTIFIER)* NEWLINE
                                         #fromImportNode
     ;
 
+<<<<<<< HEAD
 /* Assignment  */
+=======
+/* ========= Assignment ========= */
+>>>>>>> oldrepo/finalPython
 assignmentStmt
     : IDENTIFIER ASSIGN expression NEWLINE
                                         #simpleAssignNode
@@ -48,12 +68,20 @@ augAssignStmt
                                         #augAssignNode
     ;
 
+<<<<<<< HEAD
 /*  Global  */
+=======
+/* ========= Global ========= */
+>>>>>>> oldrepo/finalPython
 globalStmt
     : GLOBAL IDENTIFIER NEWLINE          #globalDeclNode
     ;
 
+<<<<<<< HEAD
 /* Decorator */
+=======
+/* ========= Decorator ========= */
+>>>>>>> oldrepo/finalPython
 routeDef
     : decorator functionDef              #decoratedFunctionNode
     ;
@@ -63,7 +91,11 @@ decorator
                                         #decoratorNode
     ;
 
+<<<<<<< HEAD
 /*  Function  */
+=======
+/* ========= Function ========= */
+>>>>>>> oldrepo/finalPython
 functionDef
     : DEF IDENTIFIER LPAREN paramList? RPAREN COLON block
                                         #functionNode
@@ -73,17 +105,29 @@ paramList
     : IDENTIFIER (COMMA IDENTIFIER)*     #paramListNode
     ;
 
+<<<<<<< HEAD
 /*  Class  */
+=======
+/* ========= Class ========= */
+>>>>>>> oldrepo/finalPython
 classDef
     : CLASS IDENTIFIER COLON block       #classNode
     ;
 
+<<<<<<< HEAD
 /*  Block */
+=======
+/* ========= Block ========= */
+>>>>>>> oldrepo/finalPython
 block
     : NEWLINE INDENT stmt+ DEDENT        #blockNode
     ;
 
+<<<<<<< HEAD
 /*  Control  */
+=======
+/* ========= Control ========= */
+>>>>>>> oldrepo/finalPython
 ifStmt
     : IF expression COLON block
       (ELIF expression COLON block)*
@@ -106,17 +150,29 @@ controlStmt
     | CONTINUE NEWLINE                   #continueNode
     ;
 
+<<<<<<< HEAD
 /*  Return  */
+=======
+/* ========= Return ========= */
+>>>>>>> oldrepo/finalPython
 returnStmt
     : RETURN expression? NEWLINE         #returnNode
     ;
 
+<<<<<<< HEAD
 /*  Expression Statement  */
+=======
+/* ========= Expression Statement ========= */
+>>>>>>> oldrepo/finalPython
 exprStmt
     : expression NEWLINE                 #expressionStmtNode
     ;
 
+<<<<<<< HEAD
 /*  Expressions  */
+=======
+/* ========= Expressions ========= */
+>>>>>>> oldrepo/finalPython
 expression
     : logicalExpr                        #expressionRoot
     ;
@@ -146,7 +202,11 @@ factor
     | primary                            #factorPrimary
     ;
 
+<<<<<<< HEAD
 /*  Primary  */
+=======
+/* ========= Primary ========= */
+>>>>>>> oldrepo/finalPython
 primary
     : IDENTIFIER                         #identifierExpr
     | STRING                             #stringExpr
@@ -162,13 +222,21 @@ primary
     | LPAREN expression RPAREN           #parenExpr
     ;
 
+<<<<<<< HEAD
 /*  List  */
+=======
+/* ========= List ========= */
+>>>>>>> oldrepo/finalPython
 listLiteral
     : LBRACK (expression (COMMA expression)*)? RBRACK
                                         #listLiteralNode
     ;
 
+<<<<<<< HEAD
 /*  Dict  */
+=======
+/* ========= Dict ========= */
+>>>>>>> oldrepo/finalPython
 dictLiteral
     : LBRACE (dictEntry (COMMA dictEntry)*)? RBRACE
                                         #dictLiteralNode
@@ -178,7 +246,11 @@ dictEntry
     : expression COLON expression        #dictEntryNode
     ;
 
+<<<<<<< HEAD
 /*  Arguments  */
+=======
+/* ========= Arguments ========= */
+>>>>>>> oldrepo/finalPython
 argList
     : argument (COMMA argument)*         #argListNode
     ;

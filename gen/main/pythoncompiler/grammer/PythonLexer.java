@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Generated from C:/Users/HP/Desktop/JAVA PROJECT/htmlJinjaCompiler/src/main/pythoncompiler/grammer/PythonLexer.g4 by ANTLR 4.13.2
+=======
+// Generated from C:/Users/maria/Downloads/Compiler-python_compiler/Compiler-python_compiler/src/main/pythoncompiler/grammer/PythonLexer.g4 by ANTLR 4.13.2
+>>>>>>> oldrepo/finalPython
 package main.pythoncompiler.grammer;
 
 import java.util.Stack;

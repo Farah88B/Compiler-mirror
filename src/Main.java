@@ -21,7 +21,7 @@ public class Main {
 
         //  HTML/CSS/Jinja Parser
         //
-        String source = "tests/base.html";
+        String source = "tests/index.html";
 
         CharStream charStream = CharStreams.fromFileName(source);
 

@@ -45,10 +45,10 @@ public class HtmlElementNode extends ASTNode {
     }
 
     private boolean isVoidTag(String tag) {
-        return tag.equals("area")  tag.equals("base")  tag.equals("br")
-        tag.equals("col")  tag.equals("embed")  tag.equals("hr")
-        tag.equals("img")  tag.equals("input")  tag.equals("link")
-        tag.equals("meta")  tag.equals("param")  tag.equals("source")
+        return tag.equals("area") || tag.equals("base")  || tag.equals("br")||
+        tag.equals("col") || tag.equals("embed") || tag.equals("hr")||
+        tag.equals("img")  ||tag.equals("input") || tag.equals("link")||
+        tag.equals("meta") || tag.equals("param") || tag.equals("source")||
         tag.equals("track") || tag.equals("wbr");
     }
 }

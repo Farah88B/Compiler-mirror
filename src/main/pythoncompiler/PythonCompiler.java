@@ -1,8 +1,10 @@
 
 package main.pythoncompiler;
 
-import main.pythoncompiler.grammer.PythonLexer;
-import main.pythoncompiler.grammer.PythonParser;
+
+import main.pythoncompiler.visitor.SymbolTableVisitor;
+import main.symbol_table.SymbolTable;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import main.pythoncompiler.ast.ASTNode;
@@ -10,6 +12,9 @@ import main.pythoncompiler.visitor.ASTBuilderVisitor;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import java.util.List;
+
 
 public class PythonCompiler {
 
@@ -44,5 +49,32 @@ public class PythonCompiler {
         System.out.println(tree.toStringTree(parser));
 
 
+
     }
 }
+
+        if (root != null) {
+            System.out.println("Building Symbol Table...");
+            SymbolTable symbolTable = new SymbolTable();
+            SymbolTableVisitor symTableVisitor = new SymbolTableVisitor(symbolTable);
+            symTableVisitor.visit(root);
+            System.out.println("\n=== Symbol Table ===");
+            symbolTable.printSymbolTable();
+            List<String> errors = symTableVisitor.getErrors();
+            if (!errors.isEmpty()) {
+                System.out.println("\n=== Semantic Analysis Report ===");
+                for (String err : errors) {
+                    System.out.println(err);
+                }
+            } else {
+                System.out.println("\nNo Semantic Errors found.");
+            }
+
+        } else {
+            System.out.println("AST Generation failed");
+        }
+    }
+
+    }
+
+
