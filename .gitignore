@@ -9,13 +9,13 @@ out/
 !**/src/test/**/out/
 
 ### Eclipse ###
-.apt_generated
+.apt_generated/
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
-.sts4-cache
+.sts4-cache/
 bin/
 
 # allow bin inside src if needed
@@ -25,9 +25,9 @@ bin/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
-/dist/
-/nbdist/
-.nb-gradle/
+ /dist/
+ /nbdist/
+ .nb-gradle/
 
 ### VS Code ###
 .vscode/

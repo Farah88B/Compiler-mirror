@@ -11,7 +11,7 @@ import antlr.TemplateParserBaseVisitor;
 
 public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
 
-
+    // Page
 
     @Override
     public ASTNode visitPage(TemplateParser.PageContext ctx) {
@@ -32,39 +32,39 @@ public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
     }
 
 
-
     @Override
     public ASTNode visitDoctypeNode(TemplateParser.DoctypeNodeContext ctx) {
         return new DoctypeNode(ctx.getText(), ctx.start.getLine());
     }
 
-@Override
-public ASTNode visitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ctx) {
 
-    String tagName = ctx.openingTag().getChild(1).getText();
+    @Override
+    public ASTNode visitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ctx) {
 
-    HtmlElementNode element =
-            new HtmlElementNode(tagName, ctx.openingTag().start.getLine());
+        String tagName = ctx.openingTag().getChild(1).getText();
+
+        HtmlElementNode element =
+                new HtmlElementNode(tagName, ctx.openingTag().start.getLine());
 
 
-    for (int i = 0; i < ctx.openingTag().getChildCount(); i++) {
-        if (ctx.openingTag().getChild(i) instanceof TemplateParser.AttributeContext) {
-            element.addChild(
-                    visit((TemplateParser.AttributeContext) ctx.openingTag().getChild(i))
-            );
+        for (int i = 0; i < ctx.openingTag().getChildCount(); i++) {
+            if (ctx.openingTag().getChild(i) instanceof TemplateParser.AttributeContext) {
+                element.addChild(
+                        visit((TemplateParser.AttributeContext) ctx.openingTag().getChild(i))
+                );
+            }
         }
+
+
+        for (TemplateParser.ContentContext c : ctx.content()) {
+            element.addChild(visit(c));
+        }
+
+
+        element.setClosingLine(ctx.closingTag().start.getLine());
+
+        return element;
     }
-
-
-    for (TemplateParser.ContentContext c : ctx.content()) {
-        element.addChild(visit(c));
-    }
-
-
-    element.setClosingLine(ctx.closingTag().start.getLine());
-
-    return element;
-}
 
     @Override
     public ASTNode visitSelfClosingElement(TemplateParser.SelfClosingElementContext ctx) {
@@ -98,7 +98,7 @@ public ASTNode visitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ct
         return new TextNode(text, ctx.start.getLine());
     }
 
-
+    // CSS RULES SECTION
 
     @Override
     public ASTNode visitStyleBlockNode(TemplateParser.StyleBlockNodeContext ctx) {
@@ -119,25 +119,25 @@ public ASTNode visitPairedHtmlElement(TemplateParser.PairedHtmlElementContext ct
 
 
 
-@Override
-public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
-    StyleRuleNode rule = new StyleRuleNode("Rule", ctx.start.getLine());
+    @Override
+    public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
+        StyleRuleNode rule = new StyleRuleNode("Rule", ctx.start.getLine());
 
 
-    if (ctx.selectorList() != null) {
-        for (TemplateParser.SelectorContext selCtx : ctx.selectorList().selector()) {
-            ASTNode child = visit(selCtx);
-            if (child != null) rule.addChild(child);
+        if (ctx.selectorList() != null) {
+            for (TemplateParser.SelectorContext selCtx : ctx.selectorList().selector()) {
+                ASTNode child = visit(selCtx);
+                if (child != null) rule.addChild(child);
+            }
         }
+
+
+        if (ctx.declarationList() != null) {
+            rule.addChild(visit(ctx.declarationList()));
+        }
+
+        return rule;
     }
-
-
-    if (ctx.declarationList() != null) {
-        rule.addChild(visit(ctx.declarationList()));
-    }
-
-    return rule;
-}
 
     @Override
     public ASTNode visitDeclarationListNode(TemplateParser.DeclarationListNodeContext ctx) {
@@ -178,6 +178,7 @@ public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
     }
 
 
+    // CSS SELECTORS SECTION
     @Override
     public ASTNode visitSelector(TemplateParser.SelectorContext ctx) {
 
@@ -248,7 +249,7 @@ public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
         return new AttributeSelectorNode("[" + attrText + "]", ctx.start.getLine());
     }
 
-
+    // CSS VALUES SECTION
 
     @Override
     public ASTNode visitStringStyleValue(TemplateParser.StringStyleValueContext ctx) {
@@ -283,7 +284,7 @@ public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
         return new FunctionCallCssValue(ctx.URL().getText(), ctx.start.getLine());
     }
 
-
+    // JINJA STRUCTURE SECTION
 
     @Override
     public ASTNode visitJinjaExpression(TemplateParser.JinjaExpressionContext ctx) {
@@ -334,7 +335,7 @@ public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
         return container;
     }
 
-
+    //JINJA CONTROL FLOW
 
     @Override
     public ASTNode visitIfStatementStart(TemplateParser.IfStatementStartContext ctx) {
@@ -386,3 +387,4 @@ public ASTNode visitStyleRuleNode(TemplateParser.StyleRuleNodeContext ctx) {
         return new JinjaNode("JinjaEndMacro", ctx.start.getLine()){};
     }
 }
+

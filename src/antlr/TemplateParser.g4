@@ -258,7 +258,11 @@ jinjaSimpleBody
     ;
 
 
+<<<<<<< HEAD
   // Container Jinja statements (with body)
+=======
+  // Container Jinja statements (with body) - FIXED to use content, not node
+>>>>>>> oldrepo/finalJinja
  jinjaContainer
      : JINJA_STMT_OPEN start=jinjaContainerStart JINJA_STMT_CLOSE
        content*

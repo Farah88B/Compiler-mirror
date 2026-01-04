@@ -1,10 +1,9 @@
 import AST.Core.PageNode;
 import Visitor.HtmlCssJinjaVisitor;
-
+import Visitor.SymbolTableVisitor;
 import antlr.TemplateLexer;
 import antlr.TemplateParser;
 import main.pythoncompiler.PythonCompiler;
-
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -16,14 +15,13 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException, Exception {
 
-        // Python Compiler
+        //  Python Compiler
         PythonCompiler compiler = new PythonCompiler();
         compiler.compile("src/tests/app1.py");
 
         //  HTML/CSS/Jinja Parser
-
+        //
         String source = "tests/base.html";
-
 
         CharStream charStream = CharStreams.fromFileName(source);
 
@@ -36,21 +34,22 @@ public class Main {
         // Parser
         TemplateParser parser = new TemplateParser(tokens);
 
-
         ParseTree tree = parser.page();
 
-        //  Parse Tree
+        // Parse Tree
         System.out.println("---------- PARSE TREE ---------- ");
         System.out.println(Trees.toStringTree(tree, parser));
 
-        //   AST
+        // AST
         HtmlCssJinjaVisitor visitor = new HtmlCssJinjaVisitor();
         PageNode ast = (PageNode) visitor.visit(tree);
 
-        //  AST
         System.out.println("\n ----------- AST ----------");
         ast.print("");
 
-
+        //  Semantic Analysis
+        SymbolTableVisitor semanticAnalyzer = new SymbolTableVisitor();
+        semanticAnalyzer.visit(tree);
+        semanticAnalyzer.getSymbolTable().printSymbolTable();
     }
 }
