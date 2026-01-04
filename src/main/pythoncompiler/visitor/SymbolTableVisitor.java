@@ -106,8 +106,7 @@ public class SymbolTableVisitor {
     }
 
     private void visitCall(CallNode node) {
-        // تحسين: لا نتحقق من الدوال إذا كانت عبارة عن Method (e.g., .append)
-        // لأننا لا نمتلك تعريف الكلاسات.
+
         boolean isMethodCall = (!node.children.isEmpty() && node.children.get(0) instanceof AttributeNode);
 
         if (!isMethodCall) {

@@ -32,11 +32,9 @@ import org.antlr.v4.runtime.*;
     }
 }
 
-<<<<<<< HEAD
-/*  Keywords */
-=======
+
 /* ========= Keywords ========= */
->>>>>>> oldrepo/finalPython
+
 FROM        : 'from';
 IMPORT      : 'import';
 DEF         : 'def';
@@ -61,11 +59,9 @@ TRUE        : 'True';
 FALSE       : 'False';
 NONE        : 'None';
 
-<<<<<<< HEAD
+
 /*  Operators */
-=======
-/* ========= Operators ========= */
->>>>>>> oldrepo/finalPython
+
 ASSIGN      : '=';
 PLUS_ASSIGN : '+=';
 MINUS_ASSIGN: '-=';
@@ -89,11 +85,9 @@ AND         : 'and';
 OR          : 'or';
 NOT         : 'not';
 
-<<<<<<< HEAD
+
 /*  Delimiters  */
-=======
-/* ========= Delimiters ========= */
->>>>>>> oldrepo/finalPython
+
 LPAREN  : '(' {opened++;};
 RPAREN  : ')' {opened--;};
 LBRACK  : '[' {opened++;};
@@ -105,11 +99,9 @@ COMMA   : ',';
 DOT     : '.';
 AT      : '@';
 
-<<<<<<< HEAD
+
 /*  Literals  */
-=======
-/* ========= Literals ========= */
->>>>>>> oldrepo/finalPython
+
 STRING
     : '"' (~["\r\n])* '"'
     | '\'' (~['\r\n])* '\''
@@ -119,20 +111,16 @@ NUMBER
     : [0-9]+
     ;
 
-<<<<<<< HEAD
+
 /* Identifier  */
-=======
-/* ========= Identifier ========= */
->>>>>>> oldrepo/finalPython
+
 IDENTIFIER
     : [a-zA-Z_][a-zA-Z_0-9]*
     ;
 
-<<<<<<< HEAD
+
 /*  Newlines & Indentation  */
-=======
-/* ========= Newlines & Indentation ========= */
->>>>>>> oldrepo/finalPython
+
 NEWLINE
     : ('\r'? '\n')+
       {
@@ -165,10 +153,8 @@ NEWLINE
       }
     ;
 
-<<<<<<< HEAD
+
 /*  Skip  */
-=======
-/* ========= Skip ========= */
->>>>>>> oldrepo/finalPython
+
 WS      : [ \t]+ -> skip ;
 COMMENT : '#' ~[\r\n]* -> skip ;

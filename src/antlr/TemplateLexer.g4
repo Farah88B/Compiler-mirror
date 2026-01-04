@@ -15,12 +15,7 @@ fragment WHITESPACE : [ \t\r\n];
 fragment TAG_START_CHAR : [a-zA-Z];
 fragment TAG_CHAR : [a-zA-Z0-9_-];
 
-<<<<<<< HEAD
-/*  DOCTYPE
-=======
-/*  DOCTYPEؤ
->>>>>>> oldrepo/finalJinja
- */
+
 DOCTYPE
     : '<!DOCTYPE' .*? '>'
     ;

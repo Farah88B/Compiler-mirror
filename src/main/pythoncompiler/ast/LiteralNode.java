@@ -2,7 +2,7 @@ package main.pythoncompiler.ast;
 
 public class LiteralNode extends ASTNode {
     public String value;
-    public String type; // INT, STRING, BOOL
+    public String type;
 
     public LiteralNode(String value, String type) {
         super("Literal");

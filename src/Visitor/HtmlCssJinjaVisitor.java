@@ -291,6 +291,8 @@ public class HtmlCssJinjaVisitor extends TemplateParserBaseVisitor<ASTNode> {
         return new JinjaExpressionNode(ctx.body.getText(), ctx.start.getLine());
     }
 
+
+
     @Override
     public ASTNode visitJinjaSimpleNode(TemplateParser.JinjaSimpleNodeContext ctx) {
         String body = ctx.body.getText();
