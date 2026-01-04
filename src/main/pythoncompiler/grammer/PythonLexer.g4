@@ -32,7 +32,7 @@ import org.antlr.v4.runtime.*;
     }
 }
 
-/* ========= Keywords ========= */
+/*  Keywords */
 FROM        : 'from';
 IMPORT      : 'import';
 DEF         : 'def';
@@ -57,7 +57,7 @@ TRUE        : 'True';
 FALSE       : 'False';
 NONE        : 'None';
 
-/* ========= Operators ========= */
+/*  Operators */
 ASSIGN      : '=';
 PLUS_ASSIGN : '+=';
 MINUS_ASSIGN: '-=';
@@ -81,7 +81,7 @@ AND         : 'and';
 OR          : 'or';
 NOT         : 'not';
 
-/* ========= Delimiters ========= */
+/*  Delimiters  */
 LPAREN  : '(' {opened++;};
 RPAREN  : ')' {opened--;};
 LBRACK  : '[' {opened++;};
@@ -93,7 +93,7 @@ COMMA   : ',';
 DOT     : '.';
 AT      : '@';
 
-/* ========= Literals ========= */
+/*  Literals  */
 STRING
     : '"' (~["\r\n])* '"'
     | '\'' (~['\r\n])* '\''
@@ -103,12 +103,12 @@ NUMBER
     : [0-9]+
     ;
 
-/* ========= Identifier ========= */
+/* Identifier  */
 IDENTIFIER
     : [a-zA-Z_][a-zA-Z_0-9]*
     ;
 
-/* ========= Newlines & Indentation ========= */
+/*  Newlines & Indentation  */
 NEWLINE
     : ('\r'? '\n')+
       {
@@ -141,6 +141,6 @@ NEWLINE
       }
     ;
 
-/* ========= Skip ========= */
+/*  Skip  */
 WS      : [ \t]+ -> skip ;
 COMMENT : '#' ~[\r\n]* -> skip ;

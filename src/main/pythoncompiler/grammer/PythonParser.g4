@@ -2,12 +2,12 @@ parser grammar PythonParser;
 
 options { tokenVocab=PythonLexer; }
 
-/* ========= Program ========= */
+/*  Program  */
 program
     : stmt* EOF                          #programRoot
     ;
 
-/* ========= Statements ========= */
+/*  Statements */
 stmt
     : importStmt                         #importStmtNode
     | assignmentStmt                     #assignStmtNode
@@ -25,18 +25,18 @@ stmt
     | emptyStmt                          #emptyStmtNode
     ;
 
-/* ========= Empty ========= */
+/*  Empty */
 emptyStmt
     : NEWLINE                            #emptyLine
     ;
 
-/* ========= Import ========= */
+/*  Import  */
 importStmt
     : FROM IDENTIFIER IMPORT IDENTIFIER (COMMA IDENTIFIER)* NEWLINE
                                         #fromImportNode
     ;
 
-/* ========= Assignment ========= */
+/* Assignment  */
 assignmentStmt
     : IDENTIFIER ASSIGN expression NEWLINE
                                         #simpleAssignNode
@@ -48,12 +48,12 @@ augAssignStmt
                                         #augAssignNode
     ;
 
-/* ========= Global ========= */
+/*  Global  */
 globalStmt
     : GLOBAL IDENTIFIER NEWLINE          #globalDeclNode
     ;
 
-/* ========= Decorator ========= */
+/* Decorator */
 routeDef
     : decorator functionDef              #decoratedFunctionNode
     ;
@@ -63,7 +63,7 @@ decorator
                                         #decoratorNode
     ;
 
-/* ========= Function ========= */
+/*  Function  */
 functionDef
     : DEF IDENTIFIER LPAREN paramList? RPAREN COLON block
                                         #functionNode
@@ -73,17 +73,17 @@ paramList
     : IDENTIFIER (COMMA IDENTIFIER)*     #paramListNode
     ;
 
-/* ========= Class ========= */
+/*  Class  */
 classDef
     : CLASS IDENTIFIER COLON block       #classNode
     ;
 
-/* ========= Block ========= */
+/*  Block */
 block
     : NEWLINE INDENT stmt+ DEDENT        #blockNode
     ;
 
-/* ========= Control ========= */
+/*  Control  */
 ifStmt
     : IF expression COLON block
       (ELIF expression COLON block)*
@@ -106,17 +106,17 @@ controlStmt
     | CONTINUE NEWLINE                   #continueNode
     ;
 
-/* ========= Return ========= */
+/*  Return  */
 returnStmt
     : RETURN expression? NEWLINE         #returnNode
     ;
 
-/* ========= Expression Statement ========= */
+/*  Expression Statement  */
 exprStmt
     : expression NEWLINE                 #expressionStmtNode
     ;
 
-/* ========= Expressions ========= */
+/*  Expressions  */
 expression
     : logicalExpr                        #expressionRoot
     ;
@@ -146,7 +146,7 @@ factor
     | primary                            #factorPrimary
     ;
 
-/* ========= Primary ========= */
+/*  Primary  */
 primary
     : IDENTIFIER                         #identifierExpr
     | STRING                             #stringExpr
@@ -162,13 +162,13 @@ primary
     | LPAREN expression RPAREN           #parenExpr
     ;
 
-/* ========= List ========= */
+/*  List  */
 listLiteral
     : LBRACK (expression (COMMA expression)*)? RBRACK
                                         #listLiteralNode
     ;
 
-/* ========= Dict ========= */
+/*  Dict  */
 dictLiteral
     : LBRACE (dictEntry (COMMA dictEntry)*)? RBRACE
                                         #dictLiteralNode
@@ -178,7 +178,7 @@ dictEntry
     : expression COLON expression        #dictEntryNode
     ;
 
-/* ========= Arguments ========= */
+/*  Arguments  */
 argList
     : argument (COMMA argument)*         #argListNode
     ;

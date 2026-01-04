@@ -16,15 +16,15 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException, Exception {
 
-        // ================== Python Compiler ==================
+        // Python Compiler
         PythonCompiler compiler = new PythonCompiler();
         compiler.compile("src/tests/app1.py");
 
-        // ================== HTML/CSS/Jinja Parser ==================
-        // مسار ملف الاختبار
+        //  HTML/CSS/Jinja Parser
+
         String source = "tests/base.html";
 
-        // قراءة الملف
+
         CharStream charStream = CharStreams.fromFileName(source);
 
         // Lexer
@@ -36,18 +36,18 @@ public class Main {
         // Parser
         TemplateParser parser = new TemplateParser(tokens);
 
-        // نقطة البداية في الـ grammar
+
         ParseTree tree = parser.page();
 
-        // ================== طباعة Parse Tree ==================
+        //  Parse Tree
         System.out.println("---------- PARSE TREE ---------- ");
         System.out.println(Trees.toStringTree(tree, parser));
 
-        // ================== بناء AST ==================
+        //   AST
         HtmlCssJinjaVisitor visitor = new HtmlCssJinjaVisitor();
         PageNode ast = (PageNode) visitor.visit(tree);
 
-        // ================== طباعة AST ==================
+        //  AST
         System.out.println("\n ----------- AST ----------");
         ast.print("");
 
